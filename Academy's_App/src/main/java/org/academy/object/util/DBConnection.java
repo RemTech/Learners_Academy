@@ -7,24 +7,28 @@ import java.sql.SQLException;
 
 
 public class DBConnection {
-  static {
-	  
-	  try {
-	  Class.forName("com.mysql.cj.jdbc.Driver");
+	static Connection con;
+/*  static {
+  
+	  	  try {
+	  Class.forName("com.mysql.jdbc.Driver");
 	  }
 	  catch(ClassNotFoundException exc) {
 		  exc.getMessage(); 
 		}
-	  }
- public static Connection getDBConnection(){
-	 Connection con=null;
+		
+	  } */
+ public static Connection getDBConnection() throws SQLException{
 	 try {
-		con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sb006","root","root12345");
-       }
-	 catch(SQLException sql) {
-		sql.getMessage();
+		  Class.forName("com.mysql.cj.jdbc.Driver");
+		 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/academy","root","root12345");
+		  }
+		  catch(ClassNotFoundException exc) {
+			  exc.getMessage(); 
+			}
+		 return con;
 	}
-	return con;
+	
 }
  
-}
+

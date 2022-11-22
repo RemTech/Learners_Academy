@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,53 +21,53 @@ public class Classes {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="CLASS_ID")
+	@Column(name="class_id")
 	private int class_id;
 	
 	@Column(name="FLOOR_LEVEL")
 	private String floor_level;
 	
 	@Column(name="CAPACITY")
-	private int capacity;
+	private String capacity;
 	
-	@Column(name="ACCESSIBLE")
-	private boolean accessible;
+	@Column(name="ACCESS") /*Accessible keyword in DB*/
+	private String accessible;
 	
 	@Column(name="CLASS_NAME")
 	private String class_name;
 	
 	@Column(name="CLASS_SIZE")
-	private int class_size;
+	private String class_size;
 	
-	@ManyToMany(mappedBy="classes")/** Many subjects to Many classes **/
+	@ManyToMany(mappedBy="classes")/** Many classes to Many subjects **/
 	private List<Subjects> subjects;
 	
-	@ManyToOne
-	@JoinColumn(name="class_id",referencedColumnName ="CLASS_ID")
-    private List<String> teachers;
+	@OneToMany()
+	@JoinColumn(name="class_id",referencedColumnName ="class_id")
+    private List<Teachers> teachers; /* One Class To Many Teachers */
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="student_id",referencedColumnName="STUDENT_ID")
-	private Students students;   /** One Class To One Student **/
+	@JoinColumn(name="class_id",referencedColumnName="class_id") /* student_id to class_id*/ /*cascade=CascadeType.ALL*/
+	private Students students;   /** One Class To One Student **/  
 	
 	public Classes() {
 		super();
 	}
 
-	public Classes(String floor_level, int capacity, boolean accessible, String class_name,int class_size, List<Subjects> subjects, List<String> teachers){
+	public Classes(String floor_level, String capacity, String accessible, String class_name,String class_size) {
 		super();
+		
 		this.floor_level = floor_level;
 		this.capacity = capacity;
 		this.accessible = accessible;
 		this.class_name = class_name;
 		this.class_size = class_size;
-		this.subjects = subjects;
-		this.teachers = teachers;
 		
 	}
-	
-	public Classes(String floor_level, int capacity, boolean accessible, String class_name,int class_size, List<Subjects> subjects, List<String> teachers, Students students){
+
+	public Classes(String floor_level, String capacity, String accessible, String class_name,String class_size, List<Subjects> subjects, List<Teachers> teachers, Students students) {
 		super();
+		
 		this.floor_level = floor_level;
 		this.capacity = capacity;
 		this.accessible = accessible;
@@ -76,7 +77,8 @@ public class Classes {
 		this.teachers = teachers;
 		this.students = students;
 	}
-	public Classes(int class_id, String floor_level, int capacity, boolean accessible, String class_name,int class_size, List<Subjects> subjects, List<String> teachers, Students students){
+		
+	public Classes(int class_id, String floor_level, String capacity, String accessible, String class_name,String class_size, List<Subjects> subjects, List<Teachers> teachers, Students students) {
 		super();
 		this.class_id = class_id;
 		this.floor_level = floor_level;
@@ -105,19 +107,19 @@ public class Classes {
 		this.floor_level = floor_level;
 	}
 
-	public int getCapacity() {
+	public String getCapacity() {
 		return capacity;
 	}
 
-	public void setCapacity(int capacity) {
+	public void setCapacity(String capacity) {
 		this.capacity = capacity;
 	}
 
-	public boolean isAccessible() {
+	public String getAccessible() {
 		return accessible;
 	}
 
-	public void setAccessible(boolean accessible) {
+	public void setAccessible(String accessible) {
 		this.accessible = accessible;
 	}
 
@@ -129,11 +131,11 @@ public class Classes {
 		this.class_name = class_name;
 	}
 
-	public int getClass_size() {
+	public String getClass_size() {
 		return class_size;
 	}
 
-	public void setClass_size(int class_size) {
+	public void setClass_size(String class_size) {
 		this.class_size = class_size;
 	}
 
@@ -145,11 +147,11 @@ public class Classes {
 		this.subjects = subjects;
 	}
 
-	public List<String> getTeachers() {
+	public List<Teachers> getTeachers() {
 		return teachers;
 	}
 
-	public void setTeachers(List<String> teachers) {
+	public void setTeachers(List<Teachers> teachers) {
 		this.teachers = teachers;
 	}
 
@@ -167,5 +169,6 @@ public class Classes {
 				+ ", accessible=" + accessible + ", class_name=" + class_name + ", class_size=" + class_size
 				+ ", subjects=" + subjects + ", teachers=" + teachers + ", students=" + students + "]";
 	}
-		
+	
+	
 }

@@ -1,5 +1,6 @@
 package org.academy.object.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,12 +14,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="SUBJECTS")
-public class Subjects {
+@Table(name="subjects")
+public class Subjects{
 	
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
-  @Column(name="SUBJECT_ID")
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
+  @Column(name="subject_id")
   private int subject_id;
   
   @Column(name="SUBJECT_NAME")
@@ -28,8 +29,8 @@ public class Subjects {
   private String subject_code;
   
   @ManyToMany()
-  @JoinTable(name="CLASSES_SUBJECTS",joinColumns=@JoinColumn(name="class_id",referencedColumnName = "class_id"),inverseJoinColumns=@JoinColumn(name="subject_id",referencedColumnName="subject_id"))
-  private List<Classes> classes; /** Many classes to Many subjects **/
+  @JoinTable(name="SUBJECT_CLASSES",joinColumns=@JoinColumn(name="subject_id",referencedColumnName = "subject_id"),inverseJoinColumns=@JoinColumn(name="class_id",referencedColumnName="class_id"))
+  private List<Classes> classes; /** Many Subjects to Many Classes **/
 
 public Subjects() {
 	super();

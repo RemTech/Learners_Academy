@@ -9,7 +9,7 @@
 <body>
 <h1 align="center">Welcome to Class Setup Page</h1>
  <h3>You can setup the list of classes by entering the relevant information below</h3>
- <form action="<%= request.getContextPath() %>/list-classes" method="post">
+ <form action="<%= request.getContextPath() %>/ClassListServlet" method="post">
  Class-Name: <input type="text" name="className"/><br><br>
  Class-Capacity: <input type="text" name="classCapacity"/><br><br>
  Class-Accessibility: <input type="text" name="classAccessibility"/><br><br>

@@ -8,7 +8,7 @@ public class Students {
 	
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
-@Column(name="STUDENT_ID")
+@Column(name="student_id")
 private int student_id;
 
 @Column(name="FIRST_NAME")
@@ -24,7 +24,7 @@ private int student_age;
 private String student_gender;
 
 @OneToOne(mappedBy="students")
-private Classes classes;
+private Classes classes; /* ONE STUDENT TO A CLASS*/
 
 public Students() {
 	super();

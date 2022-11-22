@@ -12,6 +12,8 @@
     <welcome-file>ListOfTeachers.jsp</welcome-file>
     <welcome-file>ListOfClasses.jsp</welcome-file>
     <welcome-file>ListOfSubjects.jsp</welcome-file>
+    <welcome-file>subjectSuccess.jsp</welcome-file>
+     <welcome-file>SavedClasses.jsp</welcome-file>
     </welcome-file-list>
     
     <servlet>
@@ -25,6 +27,20 @@
     <description>AssignClass</description>
     <display-name>AssignClass</display-name>
     <servlet-name>AssignClassesServlet</servlet-name>
+    <servlet-class>org.academy.object.servlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+    <description>SubjectList</description>
+    <display-name>SubjectList</display-name>
+    <servlet-name>SubjectListServlet</servlet-name>
+    <servlet-class>org.academy.object.servlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+    <description>ClassList</description>
+    <display-name>ClassList</display-name>
+    <servlet-name>ClassListServlet</servlet-name>
     <servlet-class>org.academy.object.servlet</servlet-class>
     </servlet>
     

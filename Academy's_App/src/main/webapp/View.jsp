@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Notification</title>
 </head>
-<body><h2>View.jsp</h2>
-  Classes: <%= request.getAttribute("classes")%><br><br>
-  Subjects <%= request.getAttribute("Subject") %><br><br>
+<body><h2 align="center">Notification page</h2>
+   <%= request.getAttribute("SuccessMessage")%><br><br>                                    <!-- to rewrite this in the page -->
+   <%= request.getAttribute("UnsuccessfulMessage") %><br><br>
 </body>
 </html>

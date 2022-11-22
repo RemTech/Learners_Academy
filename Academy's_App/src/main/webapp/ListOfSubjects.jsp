@@ -9,7 +9,7 @@
 <body>
 <h1 align="center">Welcome to Subjects Setup Page</h1>
  <h3>You can setup the list of subjects by entering the relevant information below</h3>
- <form action="<%= request.getContextPath() %>/list-subject" method="post">
+ <form action="<%= request.getContextPath() %>/SubjectList" method="post">
  Subject-Name: <input type="text" name="subjectName"/><br><br>
  Subject-Code: <input type="text" name="subjectCode"/><br><br>
  <tr>

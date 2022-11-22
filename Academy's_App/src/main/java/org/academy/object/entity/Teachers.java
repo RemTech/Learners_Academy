@@ -5,7 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,9 +14,9 @@ import javax.persistence.Table;
 public class Teachers {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="TEACHER_ID")	
- private int teacher_id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="teacher_id")
+	private int teacher_id;
 	
 	@Column(name="FIRST_NAME")
  private String first_name;
@@ -32,8 +33,9 @@ public class Teachers {
 	@Column(name="GENDER")
  private String gender;
 	
- @OneToMany(mappedBy="classes")
- private Classes classes; /** One To Many **/
+ @ManyToOne()
+ @JoinColumn(name="class_id")
+ private Classes classes; /** Many Teachers to One Class **/
 
 public Teachers() {
 	super();

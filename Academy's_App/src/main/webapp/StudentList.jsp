@@ -8,9 +8,16 @@
 </head>
 <body>
 <h3>Details Of Students Below</h3>
-<form action="<%=request.getContextPath()%>/studentslist" method="post"></form>
- Class: <%= request.getAttribute("")%><br><br>
- Name:  <%= request.getAttribute("") %><br><br>
- Age:   <%= request.getAttribute("")%><br><br>
+<form action="<%=request.getContextPath()%>/studentslist" method="post">
+ Class-ID: <input type="text"  name="classID"/> <br><br>
+ First-Name:  <input type="text" name="firstName"/> <br><br>
+ Last-Name:  <input type="text" name="lastName"/> <br><br>
+ Age:  <input type="text" name="age"/> <br><br>
+ <tr>
+ <td> 
+     <input type="submit" value="Search">
+ </td>
+ </tr>
+ </form>
 </body>
 </html>

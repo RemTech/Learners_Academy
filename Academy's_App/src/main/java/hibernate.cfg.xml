@@ -24,8 +24,8 @@
 <property name="c3p0.timeout">1800</property> <!-- seconds -->
 <property name="c3p0.maxConnectionAge">1200</property>
 <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
-<property name="hbm2ddl.auto">update</property>
-<!--<property name="hbm2ddl.auto">create</property>-->
+<!-- <property name="hbm2ddl.auto">update</property> -->
+ <property name="hbm2ddl.auto">create</property>
 <mapping class="org.academy.object.entity.Classes"/>
 <mapping class="org.academy.object.entity.Students"/>
 <mapping class="org.academy.object.entity.Subjects"/>

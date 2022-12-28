@@ -9,7 +9,7 @@
 <body>
 <h1 align="center">Welcome to Teachers List Setup Page</h1>
  <h3>You can setup the list of teachers by entering the relevant information below</h3>
- <form action="<%= request.getContextPath() %>/list-teachers" method="post">
+ <form action="<%= request.getContextPath()%>/teachers" method="post">
  First-Name: <input type="text" name="firstName"/><br><br>
  Last-Name: <input type="text" name="lastName"/><br><br>
  Qualification: <input type="text" name="qualification"/><br><br>

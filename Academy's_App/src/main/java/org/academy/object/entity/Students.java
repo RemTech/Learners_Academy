@@ -23,8 +23,9 @@ private int student_age;
 @Column(name="STUDENT_GENDER")
 private String student_gender;
 
-@OneToOne(mappedBy="students")
-private Classes classes; /* ONE STUDENT TO A CLASS*/
+@OneToOne() 
+@JoinColumn(name="class_id")  /*mappedBy="students"*/
+private Classes classes;     /* ONE STUDENT TO A CLASS*/
 
 public Students() {
 	super();
@@ -38,6 +39,16 @@ public Students(String first_name, String last_name, int student_age, String stu
 	this.student_gender = student_gender;
 	
 }
+
+public Students(String first_name, String last_name, int student_age, Classes classes) {
+	super();
+	this.first_name = first_name;
+	this.last_name = last_name;
+	this.student_age = student_age;
+	this.classes = classes;
+	
+}
+
 public Students(String first_name, String last_name, int student_age, String student_gender,Classes classes) {
 	super();
 	this.first_name = first_name;

@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,10 +29,14 @@ public class Teachers {
  private String qualification;
 	
 	@Column(name="AGE")
- private int age;
+ private String age;
 	
 	@Column(name="GENDER")
  private String gender;
+	
+   @OneToOne
+   @JoinColumn(name="subject_id")
+private Subjects subjects;
 	
  @ManyToOne()
  @JoinColumn(name="class_id")
@@ -40,7 +45,23 @@ public class Teachers {
 public Teachers() {
 	super();
 }
- public Teachers(String first_name, String last_name, String qualification, int age, String gender) {
+
+
+
+ public Teachers(String first_name, String last_name, String qualification, String age, String gender,Subjects subjects, Classes classes) {
+	super();
+	this.first_name = first_name;
+	this.last_name = last_name;
+	this.qualification = qualification;
+	this.age = age;
+	this.gender = gender;
+	this.subjects = subjects;
+	this.classes = classes;
+}
+
+
+
+public Teachers(String first_name, String last_name, String qualification, String age, String gender) {
 	     super();
 	     this.first_name = first_name;
 	     this.last_name = last_name;
@@ -49,7 +70,7 @@ public Teachers() {
 	     this.gender = gender;
 	
 }
- public Teachers(String first_name, String last_name, String qualification, int age, String gender,Classes classes) {
+ public Teachers(String first_name, String last_name, String qualification, String age, String gender,Classes classes) {
 		super();
 		this.first_name = first_name;
 		this.last_name = last_name;
@@ -57,8 +78,8 @@ public Teachers() {
 		this.age = age;
 		this.gender = gender;
 		this.classes = classes;
-	}
- public Teachers(int teacher_id, String first_name, String last_name, String qualification, int age, String gender,Classes classes) {
+}
+ public Teachers(int teacher_id, String first_name, String last_name, String qualification, String age, String gender,Classes classes) {
 		super();
 		this.teacher_id = teacher_id;
 		this.first_name = first_name;
@@ -67,7 +88,9 @@ public Teachers() {
 		this.age = age;
 		this.gender = gender;
 		this.classes = classes;
-	}
+}
+ 
+ 
 public int getTeacher_id() {
 	return teacher_id;
 }
@@ -92,10 +115,10 @@ public String getQualification() {
 public void setQualification(String qualification) {
 	this.qualification = qualification;
 }
-public int getAge() {
+public String getAge() {
 	return age;
 }
-public void setAge(int age) {
+public void setAge(String age) {
 	this.age = age;
 }
 public String getGender() {

@@ -39,19 +39,37 @@ public class Classes {
 	@Column(name="CLASS_SIZE")
 	private String class_size;
 	
-	@ManyToMany(mappedBy="classes")/** Many classes to Many subjects **/
+	@ManyToMany(mappedBy="classes")/** Many classes to Many subjects **/ /*mappedBy classes*/
 	private List<Subjects> subjects;
 	
 	@OneToMany()
 	@JoinColumn(name="class_id",referencedColumnName ="class_id")
     private List<Teachers> teachers; /* One Class To Many Teachers */
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="class_id",referencedColumnName="class_id") /* student_id to class_id*/ /*cascade=CascadeType.ALL*/
+	/*@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="class_id",referencedColumnName="class_id")
+	/* student_id to class_id*/ /*cascade=CascadeType.ALL*/
+	@OneToOne(mappedBy="classes")
 	private Students students;   /** One Class To One Student **/  
 	
 	public Classes() {
 		super();
+	}
+	
+	public Classes(int class_id ) {
+		super();
+	    this.class_id=class_id;	
+	}
+	
+	public Classes(String floor_level, String capacity, String accessible, String class_name) {
+		super();
+		
+		this.floor_level = floor_level;
+		this.capacity = capacity;
+		this.accessible = accessible;
+		this.class_name = class_name;
+		
+		
 	}
 
 	public Classes(String floor_level, String capacity, String accessible, String class_name,String class_size) {

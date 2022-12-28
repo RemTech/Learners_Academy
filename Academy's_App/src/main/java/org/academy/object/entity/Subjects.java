@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +28,9 @@ public class Subjects{
   
   @Column(name="SUBJECT_CODE")
   private String subject_code;
+  
+  @OneToOne(mappedBy="Subjects")
+  private Teachers teachers;
   
   @ManyToMany()
   @JoinTable(name="SUBJECT_CLASSES",joinColumns=@JoinColumn(name="subject_id",referencedColumnName = "subject_id"),inverseJoinColumns=@JoinColumn(name="class_id",referencedColumnName="class_id"))
@@ -79,6 +83,14 @@ public void setSubject_code(String subject_code) {
 	this.subject_code = subject_code;
 }
 
+public Teachers getTeachers() {
+	return teachers;
+}
+
+public void setTeachers(Teachers teachers) {
+	this.teachers = teachers;
+}
+
 public List<Classes> getClasses() {
 	return classes;
 }
@@ -90,8 +102,14 @@ public void setClasses(List<Classes> classes) {
 @Override
 public String toString() {
 	return "Subjects [subject_id=" + subject_id + ", subject_name=" + subject_name + ", subject_code=" + subject_code
-			+ ", classes=" + classes + "]";
+			+ ", teachers=" + teachers + ", classes=" + classes + "]";
 }
 
 
+
+
 }
+
+
+
+

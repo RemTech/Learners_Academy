@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import org.academy.object.entity.Subjects;
 import org.academy.object.util.DBConnection;
-import org.academy.object.util.Hconfiguration;
+
 import org.academy.object.util.HibernateDB;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -40,7 +40,6 @@ public class SubjectListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 Connection con=null ;
 		 PreparedStatement ps=null;
-		 PrintWriter pw=null ;
 	     SessionFactory sf=null;
 	     Session session=null;
 	     Transaction tx=null;
@@ -55,18 +54,13 @@ public class SubjectListServlet extends HttpServlet {
 			  /*Obj creation String subject_name, String subject_code */
 			  Subjects subjects=new Subjects(subjectName,subjectCode);
 			  session.save(subjects);
-			   con=DBConnection.getDBConnection();
-			   ps=con.prepareStatement(SQL_INSERT_SUBJECTS);
+			  con=DBConnection.getDBConnection();
+			  ps=con.prepareStatement(SQL_INSERT_SUBJECTS);
 			  ps.setString(1, subjectName);
 			  ps.setString(2, subjectCode);
 			  tx.commit();
-			 int check= ps.executeUpdate();
-			 if(check>0){
-				 /* Switch Case here for extra validation*/
-			 }else{
-				 pw.print(UNSUCCESSFUL_MESSAGE);
-			 }
-			  }catch(HibernateException he) {
+			  ps.executeUpdate();
+			 }catch(HibernateException he) {
 		         he.getMessage();
 	         }catch(SQLException sql) {
 	        	 sql.getMessage();
@@ -74,15 +68,7 @@ public class SubjectListServlet extends HttpServlet {
 		  finally{
 	        	session.close();
 	        	sf.close();
-	        	if(tx!=null) {
-	        		tx.rollback();
-	        	  }
-	        	try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-	        	}
+		  }
   
 		  displaySuccessMessage(request,response);
       }

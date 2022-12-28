@@ -13,7 +13,11 @@
     <welcome-file>ListOfClasses.jsp</welcome-file>
     <welcome-file>ListOfSubjects.jsp</welcome-file>
     <welcome-file>subjectSuccess.jsp</welcome-file>
-     <welcome-file>SavedClasses.jsp</welcome-file>
+    <welcome-file>SavedClasses.jsp</welcome-file>
+    <welcome-file>teacherSuccess.jsp</welcome-file> 
+    <welcome-file>reportpage.jsp</welcome-file>    
+    <welcome-file>report-for-class.jsp</welcome-file> 
+    <welcome-file>Assign-Classes-Page.jsp</welcome-file>                                                
     </welcome-file-list>
     
     <servlet>
@@ -44,6 +48,32 @@
     <servlet-class>org.academy.object.servlet</servlet-class>
     </servlet>
     
+    <servlet>
+    <description>teacherServlet</description>
+    <display-name>teacherServlet</display-name>
+    <servlet-name>TeachersServlet</servlet-name>
+    <servlet-class>org.academy.object.servlet</servlet-class>
+    </servlet>
    
+   <servlet>
+    <description>assignTeachers</description>
+    <display-name>assignTeachers</display-name>
+    <servlet-name>AssignTeachers</servlet-name>
+    <servlet-class>org.academy.object.servlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+    <description>studentList</description>
+    <display-name>studentList</display-name>
+    <servlet-name>StudentList</servlet-name>
+    <servlet-class>org.academy.object.servlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+    <description>class-report-page</description>
+    <display-name>ClassReport</display-name>
+    <servlet-name>ClassReport</servlet-name>
+    <servlet-class>org.academy.object.servlet</servlet-class>
+    </servlet>
     
 </web-app>

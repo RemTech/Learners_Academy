@@ -28,7 +28,7 @@ public class ServicesServlet extends HttpServlet {
 		case"/teacher_classes":
 		     teacherClasses(request,response);
 		     break;
-		case"/student-address":
+		case"/student-class":
 		     getStudents(request,response);
 		     break;
 		case"/teachers_class":
@@ -43,12 +43,20 @@ public class ServicesServlet extends HttpServlet {
 		case"/list-classes":
 			listOfClasses(request,response);
 			
+		case"/class-report":
+			classReport(request,response);
+			break;
+			
 			default:
 				/** Blank **/
 		  }
 	
 }
 	
+	private void classReport(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd= request.getRequestDispatcher("report-for-class.jsp");
+		rd.forward(request, response);
+	}
 	private void listOfTeachers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd= request.getRequestDispatcher("ListOfTeachers.jsp"); 
 	      rd.forward(request, response);
